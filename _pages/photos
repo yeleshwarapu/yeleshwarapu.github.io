@@ -1,6 +1,12 @@
 ---
 permalink: /photos/
 title: "photos"
+layout: single
 ---
 
 - here are some photos i have taken over the years:
+{% for image in site.static_files %}
+  {% if image.path contains 'assets/photos' %}
+    ![{{ image.basename }}]({{ image.path }})
+  {% endif %}
+{% endfor %}
