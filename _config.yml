@@ -16,7 +16,7 @@
 title: Arjun Yeleshwarapu
 email: ayele002@ucr.edu
 description: >- # this means to ignore newlines until "baseurl:"
-  Arjun Yeleshwarapu's Personal Website.
+  thermal systems, energy optimization, and building things.
 twitter_username: username
 github_username: yeleshwarapu
 minimal_mistakes_skin: dirt
@@ -58,23 +58,23 @@ plugins:
 author:
   name: "Arjun Yeleshwarapu"
   avatar: "/assets/images/Screenshot 2026-01-31 181823.png"
-  bio: "Third year mechanical engineering student at UCR interested in thermal engineering."
+  bio: "Mechanical engineering student interested in thermal management and energy systems. Currently designing cooling loops for electric racecars and building tools to optimize energy use."
   links:
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      url: "https://github.com/yeleshwarapu/"
     - label: "LinkedIn"
       icon: "fab fa-fw fa-linkedin"
       url: "https://linkedin.com/in/arjun-yeleshwarapu/"
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/yeleshwarapu/"
 
 footer:
   links:
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      url: "https://github.com/yeleshwarapu/"
     - label: "LinkedIn"
       icon: "fab fa-fw fa-linkedin"
       url: "https://linkedin.com/in/arjun-yeleshwarapu/"
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/yeleshwarapu/"
 
 defaults:
   # _posts
