@@ -4,19 +4,17 @@ title: "photos"
 layout: single
 ---
 
-here are some photos i have taken over the years:
+Here are some photos I have taken over the years:
 
 ![](/assets/photos/AGDC0947.JPG)
 ![](/assets/photos/DSCF0326.JPG)
 ![](/assets/photos/DSCF2985.JPG)
-![](/assets/photos/DSCF3122.JPG)
 ![](/assets/photos/DSCF3278.JPG)
 ![](/assets/photos/DSCF3356.JPG)
 ![](/assets/photos/DSCF3853.JPG)
 ![](/assets/photos/DSCF5328.JPG)
 ![](/assets/photos/DSCF6468.JPG)
 ![](/assets/photos/DSCF8234.JPG)
-![](/assets/photos/DSCF8314.JPG)
 ![](/assets/photos/DSCF8355.JPG)
 ![](/assets/photos/DSCF8396.JPG)
 ![](/assets/photos/DSCF9557.JPG)
