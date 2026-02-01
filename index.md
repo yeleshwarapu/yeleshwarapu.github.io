@@ -5,7 +5,7 @@
 layout: single
 author_profile: true
 ---
-## about
+
 
 third year mechanical engineering student at uc riverside interested in thermal systems, energy optimization, and how heat moves through complex systems.
 
