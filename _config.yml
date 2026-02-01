@@ -62,9 +62,9 @@ author:
   avatar : "/assets/images/arjunHRHeadshot.jpg"
   bio    : "Third year mechanical engineering student at UCR interested in thermal engineering."
   links:
-    #- label: "Linkedin"
-        #icon: "fas fa-fw fa-linkedin"
-     #   url: "https://linkedin.com/arjun-yeleshwarapu"
+    # - label: "Linkedin"
+    # icon: "fas fa-fw fa-linkedin"
+     # url: "https://linkedin.com/arjun-yeleshwarapu"
     - label: "GitHub"
         icon: "fab fa-fw fa-github"
         url: "https://github.com/yeleshwarapu"
