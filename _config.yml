@@ -56,23 +56,23 @@ plugins:
   - jekyll-include-cache
 
 author:
-  name: "Arjun Yeleshwarapu"
+  name: "arjun yeleshwarapu"
   avatar: "/assets/images/Screenshot 2026-01-31 181823.png"
-  bio: "Mechanical engineering student interested in thermal management and energy systems. Currently designing cooling loops for electric racecars and building tools to optimize energy use."
+  bio: "mechanical engineering student interested in thermal management and energy systems. currently designing cooling loops for electric racecar and building tools to optimize energy use."
   links:
-    - label: "LinkedIn"
+    - label: "linkedIn"
       icon: "fab fa-fw fa-linkedin"
       url: "https://linkedin.com/in/arjun-yeleshwarapu/"
-    - label: "GitHub"
+    - label: "gitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/yeleshwarapu/"
 
 footer:
   links:
-    - label: "LinkedIn"
+    - label: "linkedIn"
       icon: "fab fa-fw fa-linkedin"
       url: "https://linkedin.com/in/arjun-yeleshwarapu/"
-    - label: "GitHub"
+    - label: "gitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/yeleshwarapu/"
 
