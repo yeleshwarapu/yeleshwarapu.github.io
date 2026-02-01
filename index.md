@@ -4,24 +4,23 @@
 # See: https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 layout: single
 author_profile: true
-title: "about"
+title: "About"
 ---
 
+Third year mechanical engineering student at UC Riverside interested in thermal systems, energy optimization, and how heat moves through complex systems.
 
-third year mechanical engineering student at uc riverside interested in thermal systems, energy optimization, and how heat moves through complex systems.
+## What I Work On
 
-## what i work on
+Thermal engineering sits at the intersection of design, simulation, and hands-on problem solving. I'm drawn to problems with sequential dependencies, where solving one constraint unlocks the next. I enjoy thinking through system architectures and mapping inputs to outputs until execution becomes straightforward.
 
-thermal engineering sits at the intersection of design, simulation, and hands-on problem solving. i'm drawn to problems with sequential dependencies, where solving one constraint unlocks the next. i spend most of my time thinking through system architectures and mapping inputs to outputs until execution becomes straightforward.
+**FSAE Electric Racecar** — Lead the cooling subteam where I developed a MATLAB thermal simulation for our liquid cooling loop and scaled the team from 2 to 11 members.
 
-**fsae electric racecar** — lead the cooling subteam where i developed a matlab thermal simulation for our liquid cooling loop and scaled the team from 2 to 11 members.
+**Utthunga Internship** — Worked on thermal simulations for electronic enclosures and built Python-based diagnostic tools for pump systems and heat exchanger analysis.
 
-**utthunga internship** — worked on thermal simulations for electronic enclosures and built python-based diagnostic tools for pump systems and heat exchanger analysis.
+## Personal Projects
 
-## personal projects
+- **Cycling Route Planner**: Using personal Strava data to optimize for air quality and shade coverage rather than speed. Most routing tools prioritize time efficiency, but riding through Riverside's industrial corridors has health tradeoffs worth avoiding.
 
-- **cycling route planner**: using personal strava data to optimize for air quality and shade coverage rather than speed. most routing tools prioritize time efficiency, but riding through riverside's industrial corridors has health tradeoffs worth avoiding.
+- **Home Energy Dashboard**: Models HVAC loads, solar generation, and EV charging to identify system-level optimization opportunities.
 
-- **home energy dashboard**: models hvac loads, solar generation, and ev charging to identify system-level optimization opportunities.
-
-my work focuses on thermal management and energy systems, particularly in applications where optimization creates meaningful efficiency gains or health benefits.
+My work focuses on thermal management and energy systems, particularly in applications where optimization creates meaningful efficiency gains or health benefits.
