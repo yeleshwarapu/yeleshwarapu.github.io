@@ -58,40 +58,25 @@ plugins:
   - jekyll-include-cache
 
 author:
-  name   : "Arjun Yeleshwarapu"
-  avatar : "/assets/images/arjunHRHeadshot.jpg"
-  bio    : "Third year mechanical engineering student at UCR interested in thermal engineering."
+  name: "Arjun Yeleshwarapu"
+  avatar: "/assets/images/arjunHRHeadshot.jpg"
+  bio: "Third year mechanical engineering student at UCR interested in thermal engineering."
   links:
-    # - label: "Linkedin"
-    # icon: "fas fa-fw fa-linkedin"
-     # url: "https://linkedin.com/arjun-yeleshwarapu/"
-      - label: "GitHub"
-        icon: "fab fa-fw fa-github"
-        url: "https://github.com/yeleshwarapu/"
-  #  - label: "Twitter"
-  #    icon: "fab fa-fw fa-twitter-square"
-  #    url: "https://twitter.com/"
-  # - label: "GitHub"
-  #    icon: "fab fa-fw fa-github"
-  #    url: "https://github.com/"
-  #  - label: "Instagram"
-  #    icon: "fab fa-fw fa-instagram"
-  #    url: "https://instagram.com/"
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/yeleshwarapu/"
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://linkedin.com/in/arjun-yeleshwarapu/"
 
 footer:
   links:
-#  - label: "Linkedin"
-   #   icon: "fas fa-fw fa-linkedin"
-  #    url: "https://linkedin.com/arjun-yeleshwarapu"
-   - label: "GitHub"
+    - label: "GitHub"
       icon: "fab fa-fw fa-github"
-    url: "https://github.com/yeleshwarapu/"
- #   - label: "Twitter"
- #     icon: "fab fa-fw fa-twitter-square"
- #     url: "https://twitter.com/"
-   # - label: "Instagram"
-   #   icon: "fab fa-fw fa-instagram"
-    #  url: "https://instagram.com/"
+      url: "https://github.com/yeleshwarapu/"
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://linkedin.com/in/arjun-yeleshwarapu/"
 
 defaults:
   # _posts
