@@ -4,12 +4,12 @@
 # See: https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 layout: single
 author_profile: true
-title: "About"
+title: "about"
 ---
 
 Third year mechanical engineering student at UC Riverside interested in thermal systems, energy optimization, and how heat moves through complex systems.
 
-## What I Work On
+## interests
 
 Thermal engineering sits at the intersection of design, simulation, and hands-on problem solving. I'm drawn to problems with sequential dependencies, where solving one constraint unlocks the next. I enjoy thinking through system architectures and mapping inputs to outputs until execution becomes straightforward.
 
@@ -17,7 +17,7 @@ Thermal engineering sits at the intersection of design, simulation, and hands-on
 
 **Utthunga Internship** — Worked on thermal simulations for electronic enclosures and built Python-based diagnostic tools for pump systems and heat exchanger analysis.
 
-## Personal Projects
+## personal projects
 
 - **Cycling Route Planner**: Using personal Strava data to optimize for air quality and shade coverage rather than speed. Most routing tools prioritize time efficiency, but riding through Riverside's industrial corridors has health tradeoffs worth avoiding.
 
