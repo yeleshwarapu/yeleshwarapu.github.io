@@ -105,6 +105,8 @@ Performed thermal simulation and design optimization for electronic enclosures:
 
 **Technical Stack**: Python (NumPy, SciPy, scikit-learn)
 
+- my final internship report: click to view in full
+  [![Resume Preview](/assets/images/image1.png)](/assets/images/UtthungaFinal.pdf)
 ---
 
 ## Robotics
