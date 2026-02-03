@@ -3,11 +3,6 @@ permalink: /photos/
 title: "photos"
 layout: single
 ---
----
-permalink: /photos/
-title: "photos"
-layout: single
----
 
 Here are some photos I have taken over the years:
 
@@ -30,4 +25,4 @@ Here are some photos I have taken over the years:
 ![](https://res.cloudinary.com/db5cyuuxy/image/fetch/w_1000,c_limit,q_auto,f_auto/https://yeleshwarapu.github.io/assets/photos/ManWalkingKodak.jpg)
 ![](https://res.cloudinary.com/db5cyuuxy/image/fetch/w_1000,c_limit,q_auto,f_auto/https://yeleshwarapu.github.io/assets/photos/onyxBike.jpg)
 ![](https://res.cloudinary.com/db5cyuuxy/image/fetch/w_1000,c_limit,q_auto,f_auto/https://yeleshwarapu.github.io/assets/photos/onyxSummitDescent.jpg)
-![](https://res.cloudinary.com/db5cyuuxy/image/fetch/w_1000,c_limit,q_auto,f_auto/https://yeleshwarapu.github.io/assets/photos/SHillterniaBankipa.jpg)
+![](https://res.cloudinary.com/db5cyuuxy/image/fetch/w_1000,c_limit,q_auto,f_auto/https://yeleshwarapu.github.io/assets/photos/SFHiberniaBank.jpg)
