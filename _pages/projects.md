@@ -30,7 +30,7 @@ Designed the complete cooling architecture with focus on serviceability and comp
 - Aided internal documentation efforts by creating engineering drawings
 
 ![CAD Assembly](/assets/images/FINALLLRENDER.png)
-**Figure 3:** * Isometric view showing cooling loop*
+**Figure 3:** *Isometric view showing cooling loop*
 
 ### Testing & Controls
 Instrumented the system with thermocouples and Hall-Effect flow meter to log data and verify simulation predictions.
