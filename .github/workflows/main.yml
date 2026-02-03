@@ -3,7 +3,7 @@ on:
   push:
     paths:
       - 'assets/photos/**' # Only runs when you add/change files in your photos folder
-  workflow_dispatch:      # Allows you to run it manually from the Actions tab
+  workflow_dispatch:       # Allows you to run it manually from the Actions tab
 
 jobs:
   build:
