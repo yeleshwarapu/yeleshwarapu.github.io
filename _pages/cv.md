@@ -4,4 +4,4 @@ title: "cv"
 ---
 
 - my resume: click to view in full
-  [![Resume Preview](/assets/images/Screenshot 2026-01-31 185859.png)](/assets/images/YeleshwarapuArjun2026Resume-6.pdf)
+  [![Resume Preview](/assets/images/YeleshwarapuArjun2026Resume-6-1.png)](/assets/images/YeleshwarapuArjun2026Resume-6.pdf)
