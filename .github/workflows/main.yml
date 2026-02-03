@@ -13,11 +13,10 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v4
 
-      - name: Compress Images
+- name: Compress Images
         uses: calibreapp/image-actions@main
         with:
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
-          # Compression settings
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Fixed this line
           jpegQuality: '80'
           pngQuality: '80'
           webpQuality: '80'
