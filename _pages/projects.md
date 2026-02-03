@@ -42,6 +42,31 @@ Instrumented the system with thermocouples and Hall-Effect flow meter to log dat
 Scaled the Cooling Subteam from 2 to 11 members (4x typical annual intake). Standardized documentation by implementing FFMEA and assembly manuals to ensure knowledge transfer.
 
 ---
+## Utthunga Internship (Summer 2025)
+
+### Thermal Simulation & Design Optimization
+Performed thermal simulation and design optimization for electronic enclosures:
+
+- **Fanless Automotive ECU**: Used Altair SimLab to analyze MOSFET temperatures and recommend cooling improvements
+- **HART Simulator Enclosure**: Refined sheet metal design in SolidWorks for manufacturability and thermal performance
+
+### Python Diagnostic Tools
+
+**Pump Performance Classifier**:
+- Created a parametric tool for generating pump performance curves
+- Built a 96%-accurate classifier using synthetic sensor data to predict OK/Warning/Failure states
+- Enables predictive maintenance before catastrophic pump failure
+
+**Heat Exchanger Analysis Tool**:
+- Automated heat exchanger design calculations using LMTD and ε-NTU methods
+- Modular Python architecture for rapid parameter sweeps
+- Reduced manual calculation effort for thermal design iterations
+
+**Technical Stack**: Python (NumPy, SciPy, scikit-learn)
+
+- my final internship report: click to view in full
+  [![Resume Preview](/assets/images/image1.png)](/assets/images/UtthungaFinal.pdf)
+---
 
 ## Personal Projects
 
@@ -81,32 +106,6 @@ Created a modular home energy simulation and dashboard modeling HVAC, appliances
 
 **Next Steps**: Add predictive modeling using weather forecasts to automate HVAC scheduling and EV charge timing.
 
----
-
-## Utthunga Internship Projects (Summer 2025)
-
-### Thermal Simulation & Design Optimization
-Performed thermal simulation and design optimization for electronic enclosures:
-
-- **Fanless Automotive ECU**: Used Altair SimLab to analyze MOSFET temperatures and recommend cooling improvements
-- **HART Simulator Enclosure**: Refined sheet metal design in SolidWorks for manufacturability and thermal performance
-
-### Python Diagnostic Tools
-
-**Pump Performance Classifier**:
-- Created a parametric tool for generating pump performance curves
-- Built a 96%-accurate classifier using synthetic sensor data to predict OK/Warning/Failure states
-- Enables predictive maintenance before catastrophic pump failure
-
-**Heat Exchanger Analysis Tool**:
-- Automated heat exchanger design calculations using LMTD and ε-NTU methods
-- Modular Python architecture for rapid parameter sweeps
-- Reduced manual calculation effort for thermal design iterations
-
-**Technical Stack**: Python (NumPy, SciPy, scikit-learn)
-
-- my final internship report: click to view in full
-  [![Resume Preview](/assets/images/image1.png)](/assets/images/UtthungaFinal.pdf)
 ---
 
 ## Robotics
