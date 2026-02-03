@@ -20,7 +20,6 @@ Here are some photos I have taken over the years:
 ![](https://res.cloudinary.com/db5cyuuxy/image/fetch/w_1000,c_limit,q_auto,f_auto/https://yeleshwarapu.github.io/assets/photos/DSCF9557.jpg)
 ![](https://res.cloudinary.com/db5cyuuxy/image/fetch/w_1000,c_limit,q_auto,f_auto/https://yeleshwarapu.github.io/assets/photos/DSCF9634.jpg)
 ![](https://res.cloudinary.com/db5cyuuxy/image/fetch/w_1000,c_limit,q_auto,f_auto/https://yeleshwarapu.github.io/assets/photos/DSCF9716.jpg)
-![](https://res.cloudinary.com/db5cyuuxy/image/fetch/w_1000,c_limit,q_auto,f_auto/https://yeleshwarapu.github.io/assets/photos/DSCF9721.jpg)
 ![](https://res.cloudinary.com/db5cyuuxy/image/fetch/w_1000,c_limit,q_auto,f_auto/https://yeleshwarapu.github.io/assets/photos/lexingtonReservoir.jpg)
 ![](https://res.cloudinary.com/db5cyuuxy/image/fetch/w_1000,c_limit,q_auto,f_auto/https://yeleshwarapu.github.io/assets/photos/ManWalkingKodak.jpg)
 ![](https://res.cloudinary.com/db5cyuuxy/image/fetch/w_1000,c_limit,q_auto,f_auto/https://yeleshwarapu.github.io/assets/photos/onyxBike.jpg)
