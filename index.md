@@ -20,6 +20,6 @@ My work focuses on thermal management and energy systems, particularly in applic
 
 ## personal projects
 
-- **Cycling Route Planner**: Using personal Strava data to optimize for air quality and shade coverage rather than speed. Most routing tools prioritize time efficiency, but riding through Riverside's industrial corridors has health tradeoffs worth avoiding.
+**Cycling Route Planner**: Using personal Strava data to optimize for air quality and shade coverage rather than speed. Most routing tools prioritize time efficiency, but riding through Riverside's industrial corridors has health tradeoffs worth avoiding.
 
-- **Home Energy Dashboard**: Models HVAC loads, solar generation, and EV charging to identify system-level optimization opportunities.
+**Home Energy Dashboard**: Models HVAC loads, solar generation, and EV charging to identify system-level optimization opportunities.
