@@ -16,20 +16,21 @@ Built a MATLAB thermal simulation workflow modeling motor/inverter heat generati
 - Developed empirical test methods to validate flow rates, cavitation thresholds, and loop volume
 
 ![Thermal Simulation Results](/assets/images/T_bulk_compare.png)
-*Placeholder: MATLAB output showing coolant temperature vs. lap time*
+**Figure 1:** *MATLAB output showing coolant temperature vs. lap time*
 
 
 ![{Pump vs. System Curve](/assets/images/pump_system_curve_21V.png)
+**Figure 2:** *MATLAB plot showing our predicted flow rate at 21V*
 
 ### Design
 Designed the complete cooling architecture with focus on serviceability and compact packaging.
 
 - Created 3D-printed pump mounts and sheet metal mounting tabs in SolidWorks
-- Managed CAD assembly integration with full vehicle (suspension, chassis, battery pack)
-- Produced GD&T-compliant manufacturing drawings for machine shop fabrication
+- Managed CAD assembly integration with full vehicle 
+- Aided internal documentation efforts by creating engineering drawings
 
 ![CAD Assembly](/assets/images/FINALLLRENDER.png)
-*Placeholder: Isometric view showing cooling loop*
+**Figure 3:** * Isometric view showing cooling loop*
 
 ### Testing & Controls
 Instrumented the system with thermocouples and Hall-Effect flow meter to log data and verify simulation predictions.
@@ -38,7 +39,7 @@ Instrumented the system with thermocouples and Hall-Effect flow meter to log dat
 - Implemented embedded fan control system on Arduino Uno R3 using custom PWM curves for six 36W fans—significantly reduced power draw while maintaining optimal temperatures
 
 ### Team Leadership
-Scaled the Cooling Subteam from 2 to 11 members (4x typical annual intake). Standardized documentation by implementing FFMEA and assembly manuals to ensure knowledge transfer across graduation cycles.
+Scaled the Cooling Subteam from 2 to 11 members (4x typical annual intake). Standardized documentation by implementing FFMEA and assembly manuals to ensure knowledge transfer.
 
 ---
 
@@ -47,7 +48,7 @@ Scaled the Cooling Subteam from 2 to 11 members (4x typical annual intake). Stan
 ### Strava Route Planner (R'Cycle Co-Op)
 **Status**: Ongoing | [GitHub](#)
 
-Built a Python-based cycling route planner that generates bike loops using ~5,000 miles of personal Strava data. Most routing tools optimize for speed or distance—this optimizes for air quality and UV exposure to reduce health impacts from exercising in industrial corridors.
+Built a Python-based cycling route planner that generates bike loops using ~5,000 miles of personal Strava data. Most routing tools optimize for speed or distance, but this tool optimizes for air quality and UV exposure to reduce health impacts from exercising in industrial corridors.
 
 **Current Features**:
 - Route generation from personal ride history using Strava API
@@ -102,9 +103,7 @@ Performed thermal simulation and design optimization for electronic enclosures:
 - Modular Python architecture for rapid parameter sweeps
 - Reduced manual calculation effort for thermal design iterations
 
-**Technical Stack**: Python (NumPy, SciPy, scikit-learn), synthetic data generation for ML training
-
-<iframe src="[https://docs.google.com](https://drive.google.com/file/d/1LgaIKOzjAINw8J1G5FmG4zZgErZOmGkj/view?usp=sharing)" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+**Technical Stack**: Python (NumPy, SciPy, scikit-learn)
 
 ---
 
@@ -117,9 +116,6 @@ Led subteams in designing, fabricating, and assembling competition robots for FR
 - Taught Fusion 360 and machine shop safety to 25+ members
 - Oversaw mechanical design, fabrication, and assembly processes
 - Coordinated cross-functional teams (mechanical, electrical, programming, business)
-
-![FRC Robot](/assets/images/frc_robot.png)
-*Placeholder: Photo of competition robot or team at event*
 
 **Skills Developed**: Project management, technical mentorship, CAD/CAM workflows, systems integration
 
