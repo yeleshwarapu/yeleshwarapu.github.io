@@ -6,8 +6,6 @@ title: "projects"
 ## FSAE Cooling Loop
 **Highlander Racing** | UC Riverside | March 2024 – Present
 
-![Cooling Loop Render](/assets/images/FINALLLRENDER.png)
-
 Led analysis, design, and testing of a liquid-cooling loop for a Formula SAE Electric racecar. Managed thermal requirements for motor and inverter while meeting FSAE rules constraints and packaging limitations.
 
 ### Analysis
@@ -17,8 +15,11 @@ Built a MATLAB thermal simulation workflow modeling motor/inverter heat generati
 - Validated flow rate requirements → collaborated with EE team to implement a custom 97.4% efficient 21V boost converter to meet 8 LpM target
 - Developed empirical test methods to validate flow rates, cavitation thresholds, and loop volume
 
-![Thermal Simulation Results](/assets/images/matlab_thermal.png)
+![Thermal Simulation Results](/assets/images/T_bulk_compare.png)
 *Placeholder: MATLAB output showing coolant temperature vs. lap time*
+
+
+![{Pump vs. System Curve](/assets/images/pump_system_curve_21V.png)
 
 ### Design
 Designed the complete cooling architecture with focus on serviceability and compact packaging.
@@ -27,17 +28,14 @@ Designed the complete cooling architecture with focus on serviceability and comp
 - Managed CAD assembly integration with full vehicle (suspension, chassis, battery pack)
 - Produced GD&T-compliant manufacturing drawings for machine shop fabrication
 
-![CAD Assembly](/assets/images/cooling_cad_assembly.png)
-*Placeholder: Isometric view showing cooling loop integrated with chassis*
+![CAD Assembly](/assets/images/FINALLLRENDER.png)
+*Placeholder: Isometric view showing cooling loop*
 
 ### Testing & Controls
 Instrumented the system with thermocouples and Hall-Effect flow meter to log data and verify simulation predictions.
 
 - Bench-tested loop for leaks, flow rate verification, pump performance
 - Implemented embedded fan control system on Arduino Uno R3 using custom PWM curves for six 36W fans—significantly reduced power draw while maintaining optimal temperatures
-
-![Testing Setup](/assets/images/cooling_bench_test.png)
-*Placeholder: Photo of bench test setup with instrumentation*
 
 ### Team Leadership
 Scaled the Cooling Subteam from 2 to 11 members (4x typical annual intake). Standardized documentation by implementing FFMEA and assembly manuals to ensure knowledge transfer across graduation cycles.
@@ -51,22 +49,19 @@ Scaled the Cooling Subteam from 2 to 11 members (4x typical annual intake). Stan
 
 Built a Python-based cycling route planner that generates bike loops using ~5,000 miles of personal Strava data. Most routing tools optimize for speed or distance—this optimizes for air quality and UV exposure to reduce health impacts from exercising in industrial corridors.
 
-![Route Generation Example](/assets/images/strava_routes.png)
-*Placeholder: Map showing generated routes overlaid with air quality data*
-
 **Current Features**:
 - Route generation from personal ride history using Strava API
 - Loop creation algorithm for discovering new areas
 - GPX export for navigation
 
 **In Progress**:
-- Integration with EPA AirNow API for real-time PM2.5 data
+- Integration with pollution data for PM2.5 data
 - UV index overlay to minimize sun exposure during peak hours
 - Route scoring system balancing distance, air quality, and shade coverage
 
 **Technical Stack**: Python (NumPy, Pandas, Matplotlib), Strava API, Folium for mapping
 
-**Motivation**: Riding through Riverside's industrial corridors means exposure to PM2.5 levels that regularly exceed EPA thresholds. A 10-mile route through freight zones vs. residential areas can mean a 40% difference in particulate exposure.
+**Motivation**: Riding through Riverside's industrial corridors, I became interested in crafting routes that protect me from PM 2.5 pollutants and reduce my exposure to harmful effects of UV.
 
 ---
 
@@ -75,22 +70,11 @@ Built a Python-based cycling route planner that generates bike loops using ~5,00
 
 Created a modular home energy simulation and dashboard modeling HVAC, appliances, EV charging, and solar PV for a 3-bedroom house. The goal: identify system-level optimization opportunities that aren't obvious from individual component behavior.
 
-![Energy Dashboard Interface](/assets/images/energy_dashboard_ui.png)
-*Placeholder: Screenshot of dashboard showing energy flows*
-
 **Features**:
 - Season-aware cost, load, and solar generation profiles
 - Interactive sliders for real-time control (HVAC setpoints, EV charge timing)
 - Analytics for peak load, subsystem energy shares, and solar offset
 - Actionable efficiency recommendations
-
-![Sankey Diagram](/assets/images/energy_sankey.png)
-*Placeholder: Sankey diagram showing energy flows between solar, grid, HVAC, EV, and household loads*
-
-**Key Findings**:
-- HVAC pre-cooling before ToU peak rates saves ~$15/month in summer
-- Shifting EV charging to solar production hours reduces grid draw by 40%
-- Solar offset maximization requires coordinating appliance schedules with generation curves
 
 **Technical Stack**: Python (Pandas, Matplotlib), modular simulation architecture, Jupyter notebooks for analysis
 
@@ -106,9 +90,6 @@ Performed thermal simulation and design optimization for electronic enclosures:
 - **Fanless Automotive ECU**: Used Altair SimLab to analyze MOSFET temperatures and recommend cooling improvements
 - **HART Simulator Enclosure**: Refined sheet metal design in SolidWorks for manufacturability and thermal performance
 
-![Thermal Simulation Results](/assets/images/utthunga_thermal.png)
-*Placeholder: SimLab temperature contour plot*
-
 ### Python Diagnostic Tools
 
 **Pump Performance Classifier**:
@@ -122,6 +103,8 @@ Performed thermal simulation and design optimization for electronic enclosures:
 - Reduced manual calculation effort for thermal design iterations
 
 **Technical Stack**: Python (NumPy, SciPy, scikit-learn), synthetic data generation for ML training
+
+<iframe src="[https://docs.google.com](https://drive.google.com/file/d/1LgaIKOzjAINw8J1G5FmG4zZgErZOmGkj/view?usp=sharing)" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
 ---
 
