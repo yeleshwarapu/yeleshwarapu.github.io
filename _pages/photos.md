@@ -4,25 +4,11 @@ title: "photos"
 layout: single
 ---
 
-Here are some photos I have taken over the years:
+{% assign cloud_name = "db5cyuuxy" %}
+{% assign base_url = "https://yeleshwarapu.github.io" %}
 
-![](/assets/photos/AGDC0947.JPG)
-![](/assets/photos/DSCF0326.JPG)
-![](/assets/photos/DSCF2985.JPG)
-![](/assets/photos/DSCF3278.JPG)
-![](/assets/photos/DSCF3356.JPG)
-![](/assets/photos/DSCF3853.JPG)
-![](/assets/photos/DSCF5328.JPG)
-![](/assets/photos/DSCF6468.JPG)
-![](/assets/photos/DSCF8234.JPG)
-![](/assets/photos/DSCF8355.JPG)
-![](/assets/photos/DSCF8396.JPG)
-![](/assets/photos/DSCF9557.JPG)
-![](/assets/photos/DSCF9634.JPG)
-![](/assets/photos/DSCF9716.JPG)
-![](/assets/photos/DSCF9721.JPG)
-![](/assets/photos/lexingtonReservoir.jpg)
-![](/assets/photos/ManWalkingKodak.jpg)
-![](/assets/photos/onyxBike.jpg)
-![](/assets/photos/onyxSummitDescent.jpg)
-![](/assets/photos/SHillterniaBankipa.jpg)
+{% for file in site.static_files %}
+  {% if file.path contains 'assets/photos/' %}
+    <img src="https://res.cloudinary.com/{{ cloud_name }}/image/fetch/w_1000,c_limit,q_auto,f_auto/{{ base_url }}{{ file.path }}" alt="{{ file.name }}" loading="lazy" />
+  {% endif %}
+{% endfor %}
