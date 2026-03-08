@@ -295,13 +295,13 @@
         <div class="about-text">
           <p class="reveal reveal-delay-1">I'm interested in <strong>thermal systems and energy optimization</strong> — particularly where simulation meets design and hands-on problem solving.</p>
           <p class="reveal reveal-delay-2">At <strong>Highlander Racing</strong>, I lead the cooling subteam, developing MATLAB thermal simulations for our FSAE Electric vehicle's liquid cooling loop. Scaled the team from 2 → 11 members, standardized documentation, and integrated new sensor suite.</p>
-          <p class="reveal reveal-delay-3">Last summer I interned at <strong>Utthunga</strong> in Houston & Bengaluru on their Asset Performance Management team, where the broader work involved building digital twins and KPI dashboards for industrial clients. My contribution focused on thermal simulations for automotive ECUs and Python-based diagnostic tools for pump systems and heat exchangers.</p>
+          <p class="reveal reveal-delay-3">Last summer I interned at <strong>Utthunga</strong> in Houston and Bengaluru — traveling to India for the second half of the internship. I was on the Asset Performance Management team, where the broader work centered on building digital twins and predictive models for global industrial clients. My work spanned thermal simulation, Python tooling, and hands-on exposure to DCS and APM systems — including FMEA sessions, plant walkthroughs, and structured learning across energy management and process engineering tools like ASPEN.</p>
         </div>
         <div class="about-stats reveal reveal-delay-4">
           <div class="stat-cell"><div class="stat-value">2→11</div><div class="stat-label">Team members scaled</div></div>
-          <div class="stat-cell"><div class="stat-value">97.4%</div><div class="stat-label">Boost converter efficiency</div></div>
+          <div class="stat-cell"><div class="stat-value">62.7%</div><div class="stat-label">Cooling Loop Mass Reduction vs 24E</div></div>
           <div class="stat-cell"><div class="stat-value">96%</div><div class="stat-label">Classifier accuracy</div></div>
-          <div class="stat-cell"><div class="stat-value">8 LpM</div><div class="stat-label">Cooling flow achieved</div></div>
+          <div class="stat-cell"><div class="stat-value">< 50°C</div><div class="stat-label">Peak coolant temp achieved</div></div>
         </div>
       </div>
       <div class="reveal reveal-delay-2">
@@ -365,6 +365,26 @@
             coordinated integration with the broader vehicle across electrical and mechanical
             systems. See the Projects section for a deeper look at the technical work.
           </p>
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 20px;">
+            <div style="overflow: hidden; border: 1px solid var(--border);">
+              <img src="https://yeleshwarapu.github.io/assets/images/coolingloopbelow.jpg"
+                  alt="Cooling loop below" 
+                  style="width:100%; height:140px; object-fit:cover; display:block; filter:grayscale(15%) contrast(1.05); transition: transform .4s ease;"
+                  onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+            </div>
+            <div style="overflow: hidden; border: 1px solid var(--border);">
+              <img src="https://yeleshwarapu.github.io/assets/images/coolingLoopsideview.jpg"
+                  alt="Cooling loop side view" 
+                  style="width:100%; height:140px; object-fit:cover; display:block; filter:grayscale(15%) contrast(1.05); transition: transform .4s ease;"
+                  onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+            </div>
+            <div style="overflow: hidden; border: 1px solid var(--border);">
+              <img src="https://yeleshwarapu.github.io/assets/images/CoolingLoopTestBenchCropped.png"
+                  alt="Cooling loop test bench" 
+                  style="width:100%; height:140px; object-fit:cover; display:block; filter:grayscale(15%) contrast(1.05); transition: transform .4s ease;"
+                  onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+  </div>
+</div>
         </div>
       </div>
 
@@ -383,18 +403,40 @@
         </div>
         <div class="exp-body">
           <p style="color: var(--text-muted); font-size: 13px; line-height: 1.9;">
-            At Utthunga I was part of the Asset Performance Management team, where the
-            broader work centered on building digital twins and KPI dashboards for
-            industrial clients. My work spanned thermal simulation and Python tooling.
-            On the simulation side, I used Altair SimLab to analyze MOSFET temperatures
-            on a fanless automotive ECU and recommend cooling improvements, and refined
-            a sheet metal HART simulator enclosure in SolidWorks for manufacturability
-            and thermal performance. For Python tooling, I built a parametric pump
-            performance curve generator and a 96%-accurate classifier using synthetic
-            sensor data to predict OK, Warning, and Failure states. I also automated
-            heat exchanger design calculations using LMTD and ε-NTU methods in a modular
-            architecture that cut down manual iteration time.
+            At Utthunga I was part of the Asset Performance Management team, traveling to 
+            Bengaluru, India for the first half of my internship. The broader work centered on 
+            digital twins and predictive modeling for global industrial clients. I built a 
+            parametric Python tool for centrifugal pump performance curves using 2D interpolation 
+            across RPM ranges, with interactive Plotly visualizations and a CLI for querying 
+            interpolated values. I also built a pump health classifier using synthetic sensor data 
+            across vibration, temperature, and pressure — achieving 96% accuracy with Decision Trees 
+            and performing feature attribution for interpretability. On the simulation side I used 
+            Altair SimLab on a fanless automotive ECU and refined a sheet metal HART enclosure in 
+            SolidWorks. Beyond technical work, I shadowed DCS and APM engineering teams to understand 
+            how telemetry, control logic, and predictive modeling converge in modern smart systems, 
+            and participated in FMEA sessions and plant walkthroughs that directly informed my 
+            modeling assumptions.
           </p>
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 20px;">
+            <div style="overflow: hidden; border: 1px solid var(--border);">
+              <img src="https://yeleshwarapu.github.io/assets/images/apmmonitor.jpg"
+                  alt="APM KPI dashboard" 
+                  style="width:100%; height:140px; object-fit:cover; display:block; filter:grayscale(15%) contrast(1.05); transition: transform .4s ease;"
+                  onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+            </div>
+            <div style="overflow: hidden; border: 1px solid var(--border);">
+              <img src="https://yeleshwarapu.github.io/assets/images/fmeaanalytics.jpg"
+                  alt="FMEA analytics notes" 
+                  style="width:100%; height:140px; object-fit:cover; display:block; filter:grayscale(15%) contrast(1.05); transition: transform .4s ease;"
+                  onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+            </div>
+            <div style="overflow: hidden; border: 1px solid var(--border);">
+              <img src="https://yeleshwarapu.github.io/assets/images/teampicture.jpg"
+                  alt="Utthunga team Bengaluru" 
+                  style="width:100%; height:140px; object-fit:cover; display:block; filter:grayscale(15%) contrast(1.05); transition: transform .4s ease;"
+                  onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+            </div>
+          </div>
         </div>
       </div>
 
@@ -420,6 +462,26 @@
             sub-teams, which brought member retention up to 90% and rebuilt the technical
             skills pipeline that the pandemic had disrupted.
           </p>
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 20px;">
+            <div style="overflow: hidden; border: 1px solid var(--border);">
+              <img src="https://yeleshwarapu.github.io/assets/images/tshirtcannonRobot.png"
+                  alt="FRC robot" 
+                  style="width:100%; height:140px; object-fit:cover; display:block; filter:grayscale(15%) contrast(1.05); transition: transform .4s ease;"
+                  onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+            </div>
+            <div style="overflow: hidden; border: 1px solid var(--border);">
+              <img src="https://yeleshwarapu.github.io/assets/images/roboticschassis.jpg"
+                  alt="Robotics chassis" 
+                  style="width:100%; height:140px; object-fit:cover; display:block; filter:grayscale(15%) contrast(1.05); transition: transform .4s ease;"
+                  onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+            </div>
+            <div style="overflow: hidden; border: 1px solid var(--border);">
+              <img src="https://yeleshwarapu.github.io/assets/images/robot.jpg"
+                  alt="Robot lifting" 
+                  style="width:100%; height:140px; object-fit:cover; display:block; filter:grayscale(15%) contrast(1.05); transition: transform .4s ease;"
+                  onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+            </div>
+          </div>
         </div>
       </div>
 
