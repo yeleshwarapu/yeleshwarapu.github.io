@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arjun Yeleshwarapu — Mechanical Engineering</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0d0d;
+    --surface: #141414;
+    --card: #1a1a1a;
+    --border: #2a2a2a;
+    --amber: #E8A43E;
+    --amber-dim: #c4852a;
+    --teal: #3EC8C8;
+    --teal-dim: #2a9999;
+    --text: #f0ece4;
+    --text-muted: #8a8278;
+    --text-dim: #5a5650;
+    --red: #E85C3E;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    line-height: 1.7;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* ── Custom cursor ── */
+  .cursor {
+    position: fixed; top: 0; left: 0; z-index: 9999;
+    pointer-events: none; mix-blend-mode: exclusion;
+  }
+  .cursor-dot {
+    width: 8px; height: 8px; background: var(--amber);
+    border-radius: 50%; transform: translate(-50%, -50%);
+    transition: width .15s, height .15s, background .15s;
+  }
+  .cursor-ring {
+    width: 36px; height: 36px; border: 1px solid var(--amber);
+    border-radius: 50%; transform: translate(-50%, -50%);
+    transition: width .25s, height .25s, border-color .25s;
+    opacity: 0.5;
+    position: absolute; top: 0; left: 0;
+  }
+  body.hovering .cursor-dot { width: 14px; height: 14px; background: var(--teal); }
+  body.hovering .cursor-ring { width: 52px; height: 52px; border-color: var(--teal); opacity: 0.8; }
+
+  /* ── Noise overlay ── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0; z-index: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+    opacity: 0.025;
+    pointer-events: none;
+  }
+
+  /* ── Nav ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 20px 48px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid transparent;
+    transition: border-color .3s, background .3s, backdrop-filter .3s;
+  }
+  nav.scrolled {
+    border-color: var(--border);
+    background: rgba(13,13,13,0.85);
+    backdrop-filter: blur(16px);
+  }
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800; font-size: 15px;
+    letter-spacing: 0.08em;
+    color: var(--text);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--amber); }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a {
+    color: var(--text-muted);
+    text-decoration: none; font-size: 12px;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+
+  /* ── Hero ── */
+  #hero {
+    position: relative; min-height: 100vh;
+    display: flex; flex-direction: column;
+    justify-content: flex-end; padding: 0 48px 80px;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background: radial-gradient(ellipse 60% 50% at 70% 40%, rgba(232,164,62,0.07) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 60% at 20% 70%, rgba(62,200,200,0.05) 0%, transparent 70%);
+  }
+
+  .hero-grid {
+    position: absolute; inset: 0; z-index: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black, transparent);
+  }
+
+  /* Animated heat contour lines */
+  .heat-lines {
+    position: absolute; inset: 0; z-index: 0; overflow: hidden;
+  }
+  .heat-lines svg {
+    position: absolute; top: -10%; left: -10%;
+    width: 120%; height: 120%;
+    opacity: 0.12;
+  }
+
+  .hero-eyebrow {
+    position: relative; z-index: 1;
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--amber); margin-bottom: 20px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: block;
+    width: 32px; height: 1px; background: var(--amber);
+  }
+
+  .hero-name {
+    position: relative; z-index: 1;
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(52px, 8vw, 112px);
+    font-weight: 800; line-height: 0.95;
+    letter-spacing: -0.03em;
+    color: var(--text);
+    margin-bottom: 24px;
+  }
+  .hero-name .line2 {
+    display: block;
+    -webkit-text-stroke: 1px rgba(240,236,228,0.3);
+    color: transparent;
+  }
+
+  .hero-sub {
+    position: relative; z-index: 1;
+    max-width: 480px;
+    color: var(--text-muted); font-size: 13px;
+    line-height: 1.8; margin-bottom: 48px;
+  }
+
+  .hero-ctas {
+    position: relative; z-index: 1;
+    display: flex; gap: 16px; align-items: center;
+  }
+
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--amber); color: #0d0d0d;
+    padding: 12px 28px; font-family: 'DM Mono', monospace;
+    font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+    text-decoration: none; font-weight: 400;
+    transition: background .2s, transform .2s;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+  }
+  .btn-primary:hover { background: var(--amber-dim); transform: translateY(-2px); }
+
+  .btn-ghost {
+    display: inline-flex; align-items: center; gap: 8px;
+    color: var(--text-muted); text-decoration: none;
+    font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 2px;
+    transition: color .2s, border-color .2s;
+  }
+  .btn-ghost:hover { color: var(--text); border-color: var(--text-muted); }
+
+  .hero-scroll {
+    position: absolute; right: 48px; bottom: 80px; z-index: 1;
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    color: var(--text-dim); font-size: 10px; letter-spacing: 0.15em;
+    text-transform: uppercase;
+    animation: scrollBounce 2s ease-in-out infinite;
+  }
+  .hero-scroll-line {
+    width: 1px; height: 60px; background: linear-gradient(to bottom, var(--amber), transparent);
+  }
+  @keyframes scrollBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(8px); }
+  }
+
+  .hero-status {
+    position: absolute; top: 100px; right: 48px; z-index: 1;
+    display: flex; align-items: center; gap: 8px;
+    font-size: 11px; color: var(--text-muted); letter-spacing: 0.08em;
+  }
+  .status-dot {
+    width: 7px; height: 7px; border-radius: 50%; background: #4ade80;
+    box-shadow: 0 0 8px #4ade80;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; } 50% { opacity: 0.4; }
+  }
+
+  /* ── Section shared ── */
+  section { position: relative; z-index: 1; }
+
+  .section-inner {
+    max-width: 1200px; margin: 0 auto;
+    padding: 120px 48px;
+  }
+
+  .section-label {
+    font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--amber); margin-bottom: 48px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .section-label::after {
+    content: ''; flex: 1; max-width: 80px;
+    height: 1px; background: var(--amber); opacity: 0.4;
+  }
+
+  .section-heading {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 700; line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 64px;
+  }
+
+  /* ── About ── */
+  #about { border-top: 1px solid var(--border); }
+
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: start;
+  }
+
+  .about-text p {
+    color: var(--text-muted); margin-bottom: 20px;
+    font-size: 13px; line-height: 1.9;
+  }
+  .about-text p strong {
+    color: var(--text); font-weight: 400;
+  }
+
+  .about-stats {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1px; background: var(--border);
+    border: 1px solid var(--border);
+    margin-top: 48px;
+  }
+  .stat-cell {
+    background: var(--surface);
+    padding: 28px 24px;
+  }
+  .stat-value {
+    font-family: 'Syne', sans-serif;
+    font-size: 36px; font-weight: 800;
+    color: var(--amber); letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 10px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--text-dim);
+    margin-top: 6px;
+  }
+
+  .skills-block { }
+  .skill-group { margin-bottom: 32px; }
+  .skill-group-label {
+    font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--teal); margin-bottom: 12px;
+  }
+  .skill-tags {
+    display: flex; flex-wrap: wrap; gap: 8px;
+  }
+  .skill-tag {
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    padding: 6px 14px; font-size: 11px;
+    letter-spacing: 0.05em;
+    transition: border-color .2s, color .2s;
+  }
+  .skill-tag:hover { border-color: var(--amber); color: var(--amber); }
+
+  /* ── Experience ── */
+  #experience { border-top: 1px solid var(--border); }
+
+  .exp-list { display: flex; flex-direction: column; gap: 0; }
+
+  .exp-item {
+    border: 1px solid var(--border);
+    margin-bottom: -1px;
+    transition: background .2s;
+    overflow: hidden;
+  }
+  .exp-item:hover { background: var(--card); z-index: 1; }
+
+  .exp-header {
+    display: grid;
+    grid-template-columns: 48px 1fr auto;
+    align-items: center; gap: 24px;
+    padding: 28px 32px;
+    cursor: pointer;
+  }
+  .exp-num {
+    font-size: 11px; color: var(--text-dim);
+    letter-spacing: 0.1em;
+  }
+  .exp-title-block {}
+  .exp-role {
+    font-family: 'Syne', sans-serif;
+    font-size: 18px; font-weight: 700;
+    color: var(--text);
+  }
+  .exp-company {
+    font-size: 11px; color: var(--amber);
+    letter-spacing: 0.1em; margin-top: 2px;
+  }
+  .exp-meta {
+    text-align: right; font-size: 11px;
+    color: var(--text-dim); letter-spacing: 0.05em;
+  }
+  .exp-meta .location { color: var(--text-muted); margin-bottom: 2px; }
+  .exp-chevron {
+    font-size: 18px; color: var(--text-dim);
+    transition: transform .3s; margin-left: 16px;
+    display: inline-block;
+  }
+  .exp-item.open .exp-chevron { transform: rotate(45deg); color: var(--amber); }
+
+  .exp-body {
+    max-height: 0; overflow: hidden;
+    transition: max-height .4s ease, padding .3s;
+    padding: 0 32px 0 104px;
+  }
+  .exp-item.open .exp-body {
+    max-height: 600px;
+    padding: 0 32px 32px 104px;
+  }
+  .exp-body ul { list-style: none; }
+  .exp-body ul li {
+    color: var(--text-muted); font-size: 12px;
+    line-height: 1.8; padding: 4px 0;
+    padding-left: 16px; position: relative;
+  }
+  .exp-body ul li::before {
+    content: '→'; position: absolute; left: 0;
+    color: var(--amber); font-size: 10px;
+  }
+
+  /* ── Projects ── */
+  #projects { border-top: 1px solid var(--border); }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px; background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .project-card {
+    background: var(--surface);
+    padding: 40px;
+    position: relative; overflow: hidden;
+    transition: background .3s;
+  }
+  .project-card::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 2px;
+    background: var(--amber);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform .4s ease;
+  }
+  .project-card:hover { background: var(--card); }
+  .project-card:hover::before { transform: scaleX(1); }
+
+  .project-card.featured {
+    grid-column: span 2;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+  .project-card.featured::before { background: var(--teal); }
+
+  .project-tag {
+    font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--amber); margin-bottom: 16px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .project-tag.teal { color: var(--teal); }
+  .project-tag::before { content: '◆'; font-size: 6px; }
+
+  .project-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px; font-weight: 700;
+    color: var(--text); margin-bottom: 12px;
+    line-height: 1.2;
+  }
+  .project-desc {
+    font-size: 12px; color: var(--text-muted);
+    line-height: 1.8; margin-bottom: 24px;
+  }
+
+  .project-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 24px; }
+  .chip {
+    font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase;
+    border: 1px solid var(--border); color: var(--text-dim);
+    padding: 4px 10px;
+  }
+
+  .project-link {
+    font-size: 11px; color: var(--amber); text-decoration: none;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    display: inline-flex; align-items: center; gap: 6px;
+    border-bottom: 1px solid rgba(232,164,62,0.3);
+    padding-bottom: 2px;
+    transition: gap .2s;
+  }
+  .project-link:hover { gap: 10px; }
+
+  .project-visual {
+    display: flex; align-items: center; justify-content: center;
+    min-height: 180px;
+    background: var(--bg); border: 1px solid var(--border);
+    position: relative; overflow: hidden;
+  }
+  .thermal-viz {
+    width: 100%; height: 100%; min-height: 180px;
+  }
+
+  /* ── Photography ── */
+  #photos { border-top: 1px solid var(--border); }
+
+  .photo-strip {
+    display: flex; gap: 12px;
+    overflow-x: auto; padding-bottom: 16px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+  .photo-strip::-webkit-scrollbar { height: 2px; }
+  .photo-strip::-webkit-scrollbar-track { background: var(--border); }
+  .photo-strip::-webkit-scrollbar-thumb { background: var(--amber); }
+
+  .photo-item {
+    flex: 0 0 320px; height: 220px;
+    scroll-snap-align: start; overflow: hidden;
+    position: relative;
+  }
+  .photo-item img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform .6s ease, filter .3s;
+    filter: grayscale(20%) contrast(1.05);
+  }
+  .photo-item:hover img { transform: scale(1.05); filter: grayscale(0%) contrast(1.1); }
+
+  .photo-strip-heading {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 24px;
+  }
+  .photo-count { font-size: 11px; color: var(--text-dim); }
+
+  /* ── Contact / Footer ── */
+  #contact {
+    border-top: 1px solid var(--border);
+    background: var(--surface);
+  }
+
+  .contact-inner {
+    max-width: 1200px; margin: 0 auto;
+    padding: 120px 48px;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: center;
+  }
+
+  .contact-heading {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 800; line-height: 1;
+    letter-spacing: -0.03em;
+  }
+  .contact-heading span { color: var(--amber); }
+
+  .contact-links { display: flex; flex-direction: column; gap: 16px; }
+  .contact-link {
+    display: flex; align-items: center; gap: 16px;
+    padding: 20px 24px; border: 1px solid var(--border);
+    text-decoration: none; color: var(--text-muted);
+    transition: border-color .2s, color .2s, background .2s;
+    font-size: 13px;
+  }
+  .contact-link:hover {
+    border-color: var(--amber);
+    color: var(--text); background: rgba(232,164,62,0.04);
+  }
+  .contact-link-icon {
+    width: 36px; height: 36px; border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; flex-shrink: 0;
+    transition: border-color .2s, color .2s;
+  }
+  .contact-link:hover .contact-link-icon { border-color: var(--amber); color: var(--amber); }
+  .contact-link-label { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber); }
+  .contact-link-value { font-size: 12px; color: var(--text-muted); margin-top: 1px; }
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 24px 48px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 10px; color: var(--text-dim); letter-spacing: 0.1em;
+  }
+
+  /* ── Parallax layers ── */
+  .parallax-slow { will-change: transform; }
+  .parallax-fast { will-change: transform; }
+
+  /* ── Reveal animations ── */
+  .reveal {
+    opacity: 0; transform: translateY(30px);
+    transition: opacity .7s ease, transform .7s ease;
+  }
+  .reveal.visible {
+    opacity: 1; transform: translateY(0);
+  }
+  .reveal-delay-1 { transition-delay: .1s; }
+  .reveal-delay-2 { transition-delay: .2s; }
+  .reveal-delay-3 { transition-delay: .3s; }
+  .reveal-delay-4 { transition-delay: .4s; }
+
+  /* ── Floating orbs ── */
+  .orb {
+    position: absolute; border-radius: 50%; filter: blur(80px);
+    pointer-events: none; z-index: 0;
+  }
+  .orb-amber {
+    width: 400px; height: 400px;
+    background: rgba(232,164,62,0.06);
+  }
+  .orb-teal {
+    width: 300px; height: 300px;
+    background: rgba(62,200,200,0.05);
+  }
+
+  /* Ticker / marquee */
+  .marquee-wrap {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    overflow: hidden; padding: 14px 0; background: var(--surface);
+  }
+  .marquee-track {
+    display: flex; gap: 0; white-space: nowrap;
+    animation: marquee 30s linear infinite;
+  }
+  .marquee-item {
+    display: inline-flex; align-items: center; gap: 24px;
+    padding: 0 32px;
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--text-dim);
+  }
+  .marquee-item span { color: var(--amber); }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    #hero { padding: 0 24px 64px; }
+    .section-inner { padding: 80px 24px; }
+    .about-grid { grid-template-columns: 1fr; gap: 48px; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .project-card.featured { grid-column: span 1; grid-template-columns: 1fr; }
+    .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+    footer { flex-direction: column; gap: 8px; }
+    .hero-scroll { display: none; }
+    .hero-status { top: 80px; right: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Cursor -->
+<div class="cursor">
+  <div class="cursor-ring"></div>
+  <div class="cursor-dot"></div>
+</div>
+
+<!-- Nav -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">AY<span>.</span></a>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#photos">Photos</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- ════════════════════════ HERO ════════════════════════ -->
+<section id="hero">
+  <div class="hero-bg parallax-slow" data-speed="-0.2"></div>
+  <div class="hero-grid"></div>
+
+  <!-- Heat contour SVG -->
+  <div class="heat-lines">
+    <svg viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="hg1" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#E8A43E"/>
+          <stop offset="100%" stop-color="#3EC8C8"/>
+        </linearGradient>
+      </defs>
+      <!-- Thermal contour lines animated -->
+      <path d="M-50,300 C100,200 200,400 350,300 C500,200 600,380 750,280 C850,200 900,320 950,260" stroke="url(#hg1)" stroke-width="1.5" opacity="0.6">
+        <animate attributeName="d" dur="8s" repeatCount="indefinite"
+          values="M-50,300 C100,200 200,400 350,300 C500,200 600,380 750,280 C850,200 900,320 950,260;
+                  M-50,280 C100,380 200,200 350,320 C500,380 600,200 750,300 C850,380 900,200 950,300;
+                  M-50,300 C100,200 200,400 350,300 C500,200 600,380 750,280 C850,200 900,320 950,260"/>
+      </path>
+      <path d="M-50,350 C150,250 250,450 400,350 C550,250 650,430 800,330" stroke="#E8A43E" stroke-width="1" opacity="0.4">
+        <animate attributeName="d" dur="11s" repeatCount="indefinite"
+          values="M-50,350 C150,250 250,450 400,350 C550,250 650,430 800,330;
+                  M-50,320 C150,420 250,220 400,370 C550,430 650,250 800,360;
+                  M-50,350 C150,250 250,450 400,350 C550,250 650,430 800,330"/>
+      </path>
+      <path d="M-50,240 C120,140 220,340 370,240 C520,140 620,320 770,220" stroke="#3EC8C8" stroke-width="1" opacity="0.35">
+        <animate attributeName="d" dur="13s" repeatCount="indefinite"
+          values="M-50,240 C120,140 220,340 370,240 C520,140 620,320 770,220;
+                  M-50,260 C120,360 220,160 370,260 C520,360 620,160 770,260;
+                  M-50,240 C120,140 220,340 370,240 C520,140 620,320 770,220"/>
+      </path>
+      <path d="M-50,420 C130,320 230,520 380,420 C530,320 630,500 780,400" stroke="#E8A43E" stroke-width="0.8" opacity="0.25">
+        <animate attributeName="d" dur="9s" repeatCount="indefinite"
+          values="M-50,420 C130,320 230,520 380,420 C530,320 630,500 780,400;
+                  M-50,390 C130,490 230,290 380,440 C530,490 630,300 780,430;
+                  M-50,420 C130,320 230,520 380,420 C530,320 630,500 780,400"/>
+      </path>
+      <!-- Scattered dots like data points -->
+      <circle cx="200" cy="180" r="2.5" fill="#E8A43E" opacity="0.5">
+        <animate attributeName="opacity" dur="3s" repeatCount="indefinite" values="0.5;1;0.5"/>
+      </circle>
+      <circle cx="450" cy="400" r="2" fill="#3EC8C8" opacity="0.4">
+        <animate attributeName="opacity" dur="4s" repeatCount="indefinite" values="0.4;0.9;0.4"/>
+      </circle>
+      <circle cx="650" cy="200" r="1.5" fill="#E8A43E" opacity="0.6">
+        <animate attributeName="opacity" dur="2.5s" repeatCount="indefinite" values="0.6;1;0.6"/>
+      </circle>
+    </svg>
+  </div>
+
+  <div class="orb orb-amber parallax-slow" data-speed="-0.3" style="top:10%; right:10%;"></div>
+  <div class="orb orb-teal parallax-fast" data-speed="-0.5" style="top:50%; left:5%;"></div>
+
+  <div class="hero-status">
+    <div class="status-dot"></div>
+    UC Riverside · Class of 2027
+  </div>
+
+  <div class="hero-eyebrow">Mechanical Engineering Student</div>
+
+  <h1 class="hero-name">
+    Arjun<br>
+    <span class="line2">Yeleshwarapu</span>
+  </h1>
+
+  <p class="hero-sub">
+    Focused on thermal management and energy systems — where simulation meets fabrication and optimization creates real efficiency gains.
+  </p>
+
+  <div class="hero-ctas">
+    <a href="#projects" class="btn-primary">View Projects →</a>
+    <a href="#contact" class="btn-ghost">Get in touch</a>
+  </div>
+
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    Scroll
+  </div>
+</section>
+
+<!-- Marquee ticker -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <!-- doubled for seamless loop -->
+    <span class="marquee-item">Thermal Simulation <span>◆</span></span>
+    <span class="marquee-item">FSAE Electric <span>◆</span></span>
+    <span class="marquee-item">MATLAB Workflows <span>◆</span></span>
+    <span class="marquee-item">Cooling Loop Design <span>◆</span></span>
+    <span class="marquee-item">Python Diagnostics <span>◆</span></span>
+    <span class="marquee-item">SolidWorks <span>◆</span></span>
+    <span class="marquee-item">Heat Exchanger Analysis <span>◆</span></span>
+    <span class="marquee-item">Arduino Controls <span>◆</span></span>
+    <span class="marquee-item">Energy Systems <span>◆</span></span>
+    <span class="marquee-item">Thermal Simulation <span>◆</span></span>
+    <span class="marquee-item">FSAE Electric <span>◆</span></span>
+    <span class="marquee-item">MATLAB Workflows <span>◆</span></span>
+    <span class="marquee-item">Cooling Loop Design <span>◆</span></span>
+    <span class="marquee-item">Python Diagnostics <span>◆</span></span>
+    <span class="marquee-item">SolidWorks <span>◆</span></span>
+    <span class="marquee-item">Heat Exchanger Analysis <span>◆</span></span>
+    <span class="marquee-item">Arduino Controls <span>◆</span></span>
+    <span class="marquee-item">Energy Systems <span>◆</span></span>
+  </div>
+</div>
+
+<!-- ════════════════════════ ABOUT ════════════════════════ -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-label">About</div>
+    <div class="about-grid">
+      <div>
+        <h2 class="section-heading reveal">Third year ME student at UCR</h2>
+        <div class="about-text">
+          <p class="reveal reveal-delay-1">I'm interested in <strong>thermal systems and energy optimization</strong> — particularly where simulation meets design and hands-on problem solving. I'm drawn to problems with sequential dependencies: solving one constraint unlocks the next.</p>
+          <p class="reveal reveal-delay-2">At <strong>Highlander Racing</strong>, I lead the cooling subteam, developing MATLAB thermal simulations for our FSAE Electric vehicle's liquid cooling loop. Scaled the team from 2 → 11 members, standardized documentation, and implemented embedded fan control on Arduino.</p>
+          <p class="reveal reveal-delay-3">Last summer I interned at <strong>Utthunga</strong> in Houston & Bengaluru, running thermal sims on automotive ECUs and building Python-based diagnostic tools for pump systems and heat exchangers.</p>
+        </div>
+
+        <div class="about-stats reveal reveal-delay-4">
+          <div class="stat-cell">
+            <div class="stat-value">2→11</div>
+            <div class="stat-label">Team members scaled</div>
+          </div>
+          <div class="stat-cell">
+            <div class="stat-value">97.4%</div>
+            <div class="stat-label">Boost converter efficiency</div>
+          </div>
+          <div class="stat-cell">
+            <div class="stat-value">96%</div>
+            <div class="stat-label">Classifier accuracy</div>
+          </div>
+          <div class="stat-cell">
+            <div class="stat-value">8 LpM</div>
+            <div class="stat-label">Cooling flow achieved</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal reveal-delay-2">
+        <div class="skill-group">
+          <div class="skill-group-label">Software & Tools</div>
+          <div class="skill-tags">
+            <span class="skill-tag">SolidWorks</span>
+            <span class="skill-tag">Fusion 360</span>
+            <span class="skill-tag">Altair SimLab</span>
+            <span class="skill-tag">MATLAB</span>
+            <span class="skill-tag">Altium Designer</span>
+            <span class="skill-tag">LaTeX</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-label">Programming</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">NumPy / SciPy</span>
+            <span class="skill-tag">scikit-learn</span>
+            <span class="skill-tag">C/C++</span>
+            <span class="skill-tag">Arduino</span>
+            <span class="skill-tag">Git</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-label">Domain</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Thermal Simulation</span>
+            <span class="skill-tag">Fluid Systems</span>
+            <span class="skill-tag">Controls</span>
+            <span class="skill-tag">GD&T</span>
+            <span class="skill-tag">FFMEA</span>
+            <span class="skill-tag">Heat Exchangers</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-label">Certifications</div>
+          <div class="skill-tags">
+            <span class="skill-tag">IBM AI Fundamentals</span>
+            <span class="skill-tag">Cognite Data Fusion</span>
+            <span class="skill-tag">Altium PCB Design</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════ EXPERIENCE ════════════════════════ -->
+<section id="experience">
+  <div class="section-inner">
+    <div class="section-label">Experience</div>
+    <h2 class="section-heading reveal">Where I've worked</h2>
+
+    <div class="exp-list">
+
+      <div class="exp-item open">
+        <div class="exp-header" onclick="toggleExp(this)">
+          <span class="exp-num">01</span>
+          <div class="exp-title-block">
+            <div class="exp-role">Cooling Subteam Lead</div>
+            <div class="exp-company">Highlander Racing FSAE Electric</div>
+          </div>
+          <div class="exp-meta">
+            <div class="location">Riverside, CA</div>
+            <div>Mar 2024 – Present</div>
+            <span class="exp-chevron">+</span>
+          </div>
+        </div>
+        <div class="exp-body">
+          <ul>
+            <li>Engineered a MATLAB thermal simulation workflow for the 26E liquid cooling loop, modeling motor/inverter heat generation and radiator dissipation throughout a dynamic race lap</li>
+            <li>Calculated pressure drops using Swamee-Jain equation; collaborated with EE team to implement a 97.4% efficient 21V boost converter to meet the 8 LpM requirement</li>
+            <li>Developed empirical test methods to validate flow rates, cavitation thresholds, and loop volume</li>
+            <li>Integrated thermocouples and Hall-Effect flow meter to log system data and verify simulation predictions</li>
+            <li>Designed 3D-printed and sheet metal components (pump mounts, tabs) in SolidWorks with focus on serviceability and compact packaging</li>
+            <li>Implemented embedded fan control on Arduino Uno R3 with custom PWM curves for six 36W fans — reduced power draw while maintaining optimal temperatures</li>
+            <li>Scaled Cooling Subteam from 2 → 11 members; instituted FFMEA and assembly manuals for knowledge transfer</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header" onclick="toggleExp(this)">
+          <span class="exp-num">02</span>
+          <div class="exp-title-block">
+            <div class="exp-role">Mechanical Engineering Intern</div>
+            <div class="exp-company">Utthunga</div>
+          </div>
+          <div class="exp-meta">
+            <div class="location">Houston, TX & Bengaluru, India</div>
+            <div>Jun 2025 – Aug 2025</div>
+            <span class="exp-chevron">+</span>
+          </div>
+        </div>
+        <div class="exp-body">
+          <ul>
+            <li>Performed thermal simulation and design optimization for electronic enclosures using Altair SimLab on a fanless automotive ECU — recommended MOSFET/cooling improvements</li>
+            <li>Refined a sheet metal HART simulator enclosure in SolidWorks for manufacturability and thermal performance</li>
+            <li>Developed Python-based pump diagnostics: parametric tool for performance curves + 96%-accurate OK/Warning/Failure classifier using synthetic sensor data</li>
+            <li>Automated heat exchanger analysis using LMTD & ε-NTU methods in modular Python architecture — reduced manual design effort significantly</li>
+            <li>Shadowed technical sales calls, gaining insight into engineering business development and client solution scoping</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header" onclick="toggleExp(this)">
+          <span class="exp-num">03</span>
+          <div class="exp-title-block">
+            <div class="exp-role">President</div>
+            <div class="exp-company">FIRST Robotics Competition Team 256</div>
+          </div>
+          <div class="exp-meta">
+            <div class="location">San Jose, CA</div>
+            <div>Aug 2019 – Jun 2023</div>
+            <span class="exp-chevron">+</span>
+          </div>
+        </div>
+        <div class="exp-body">
+          <ul>
+            <li>Led subteams in designing, fabricating, and assembling competition robots; coordinated mechanical, electrical, programming, and business divisions</li>
+            <li>Taught Fusion 360 and machine shop safety to 25+ members</li>
+            <li>Managed team operations during COVID-19 by implementing sub-team structure — improved member retention to 90% and restored technical skills pipeline</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════ PROJECTS ════════════════════════ -->
+<section id="projects">
+  <div class="section-inner">
+    <div class="section-label">Projects</div>
+    <h2 class="section-heading reveal">Things I've built</h2>
+
+    <div class="projects-grid">
+
+      <!-- Featured: FSAE Cooling -->
+      <div class="project-card featured reveal">
+        <div>
+          <div class="project-tag teal">Featured · FSAE Electric</div>
+          <h3 class="project-title">Liquid Cooling Loop — 26E Racecar</h3>
+          <p class="project-desc">
+            Full thermal management system for an FSAE Electric vehicle. Built MATLAB simulation predicting coolant temperatures through a dynamic race lap, validated against empirical bench test data. Designed the complete cooling architecture in SolidWorks.
+          </p>
+          <div class="project-chips">
+            <span class="chip">MATLAB</span>
+            <span class="chip">SolidWorks</span>
+            <span class="chip">Arduino</span>
+            <span class="chip">Thermocouples</span>
+            <span class="chip">PWM Control</span>
+            <span class="chip">Swamee-Jain</span>
+          </div>
+          <a href="https://github.com/yeleshwarapu/" class="project-link" target="_blank">View on GitHub →</a>
+        </div>
+        <div class="project-visual">
+          <svg class="thermal-viz" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" fill="none">
+            <defs>
+              <linearGradient id="tempGrad" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#3EC8C8"/>
+                <stop offset="50%" stop-color="#E8A43E"/>
+                <stop offset="100%" stop-color="#E85C3E"/>
+              </linearGradient>
+            </defs>
+            <!-- Axes -->
+            <line x1="40" y1="160" x2="280" y2="160" stroke="#2a2a2a" stroke-width="1"/>
+            <line x1="40" y1="20" x2="40" y2="160" stroke="#2a2a2a" stroke-width="1"/>
+            <!-- Axis labels -->
+            <text x="155" y="178" fill="#5a5650" font-size="9" text-anchor="middle" font-family="monospace">Lap Time (s)</text>
+            <text x="14" y="90" fill="#5a5650" font-size="9" text-anchor="middle" font-family="monospace" transform="rotate(-90,14,90)">T_coolant (°C)</text>
+            <!-- Grid lines -->
+            <line x1="40" y1="130" x2="280" y2="130" stroke="#1e1e1e" stroke-width="1"/>
+            <line x1="40" y1="100" x2="280" y2="100" stroke="#1e1e1e" stroke-width="1"/>
+            <line x1="40" y1="70" x2="280" y2="70" stroke="#1e1e1e" stroke-width="1"/>
+            <line x1="40" y1="40" x2="280" y2="40" stroke="#1e1e1e" stroke-width="1"/>
+            <!-- Threshold line -->
+            <line x1="40" y1="55" x2="280" y2="55" stroke="#E85C3E" stroke-width="1" stroke-dasharray="4,3" opacity="0.7"/>
+            <text x="282" y="58" fill="#E85C3E" font-size="8" font-family="monospace">42°C</text>
+            <!-- Coolant temp curve (simulated) -->
+            <path d="M40,140 C70,135 90,120 110,108 C130,96 145,85 160,78 C175,71 190,68 210,64 C230,60 250,58 280,56"
+              stroke="url(#tempGrad)" stroke-width="2.5" stroke-linecap="round">
+              <animate attributeName="stroke-dasharray" from="0,500" to="500,0" dur="2s" fill="freeze"/>
+            </path>
+            <!-- Motor temp curve -->
+            <path d="M40,138 C70,130 90,115 110,102 C130,89 145,78 160,70 C175,62 190,57 210,52 C230,48 250,44 280,42"
+              stroke="#E8A43E" stroke-width="1.5" stroke-linecap="round" opacity="0.5" stroke-dasharray="3,2">
+              <animate attributeName="stroke-dasharray" from="0,500" to="3,2" dur="2.5s" fill="freeze"/>
+            </path>
+            <!-- Legend -->
+            <line x1="50" y1="18" x2="68" y2="18" stroke="url(#tempGrad)" stroke-width="2"/>
+            <text x="72" y="21" fill="#8a8278" font-size="7.5" font-family="monospace">T_coolant</text>
+            <line x1="130" y1="18" x2="148" y2="18" stroke="#E8A43E" stroke-width="1.5" stroke-dasharray="3,2"/>
+            <text x="152" y="21" fill="#8a8278" font-size="7.5" font-family="monospace">T_motor</text>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Pump Classifier -->
+      <div class="project-card reveal">
+        <div class="project-tag">Utthunga · Python</div>
+        <h3 class="project-title">Pump Performance Classifier</h3>
+        <p class="project-desc">
+          96%-accurate ML classifier using synthetic sensor data to predict OK / Warning / Failure pump states. Enables predictive maintenance before catastrophic failure. Parametric tool generates performance curves for rapid design iteration.
+        </p>
+        <div class="project-chips">
+          <span class="chip">Python</span>
+          <span class="chip">scikit-learn</span>
+          <span class="chip">NumPy</span>
+          <span class="chip">Synthetic Data</span>
+        </div>
+        <a href="https://github.com/yeleshwarapu/" class="project-link" target="_blank">GitHub →</a>
+      </div>
+
+      <!-- Heat Exchanger Tool -->
+      <div class="project-card reveal reveal-delay-1">
+        <div class="project-tag">Utthunga · Python</div>
+        <h3 class="project-title">Heat Exchanger Analysis Tool</h3>
+        <p class="project-desc">
+          Automated HX design calculations using LMTD and ε-NTU methods. Modular architecture for rapid parameter sweeps — significantly reduced manual calculation effort for thermal design iterations.
+        </p>
+        <div class="project-chips">
+          <span class="chip">Python</span>
+          <span class="chip">SciPy</span>
+          <span class="chip">LMTD</span>
+          <span class="chip">ε-NTU</span>
+        </div>
+        <a href="https://github.com/yeleshwarapu/" class="project-link" target="_blank">GitHub →</a>
+      </div>
+
+      <!-- Strava Route -->
+      <div class="project-card reveal reveal-delay-2">
+        <div class="project-tag">Personal · Ongoing</div>
+        <h3 class="project-title">Strava Route Planner — R'Cycle Co-Op</h3>
+        <p class="project-desc">
+          Cycling route generator using ≈5,000 miles of personal Strava data. Optimizes for air quality and UV exposure rather than speed — designed to reduce health impacts from riding through Riverside's industrial corridors.
+        </p>
+        <div class="project-chips">
+          <span class="chip">Python</span>
+          <span class="chip">Strava API</span>
+          <span class="chip">Folium</span>
+          <span class="chip">PM2.5 Data</span>
+        </div>
+        <a href="https://github.com/yeleshwarapu/" class="project-link" target="_blank">GitHub →</a>
+      </div>
+
+      <!-- Home Energy Dashboard -->
+      <div class="project-card reveal reveal-delay-3">
+        <div class="project-tag">Personal · 2025</div>
+        <h3 class="project-title">Home Energy Dashboard</h3>
+        <p class="project-desc">
+          Modular simulation modeling HVAC, appliances, EV charging, and solar PV for a 3-bedroom house. Season-aware cost and load profiles, interactive control sliders, analytics for peak load and solar offset.
+        </p>
+        <div class="project-chips">
+          <span class="chip">Python</span>
+          <span class="chip">Pandas</span>
+          <span class="chip">Matplotlib</span>
+          <span class="chip">Jupyter</span>
+        </div>
+        <a href="https://github.com/yeleshwarapu/" class="project-link" target="_blank">GitHub →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════ PHOTOS ════════════════════════ -->
+<section id="photos">
+  <div class="section-inner">
+    <div class="section-label">Photography</div>
+    <div class="photo-strip-heading">
+      <h2 class="section-heading" style="margin-bottom:0">Frames from the road</h2>
+      <span class="photo-count">19 photos · scroll →</span>
+    </div>
+    <div class="photo-strip">
+      <div class="photo-item"><img src="https://res.cloudinary.com/db5cyuuxy/image/fetch/w_640,c_limit,q_auto,f_auto/https://yeleshwarapu.github.io/assets/photos/AGDC0947.jpg" alt="photo" loading="lazy"></div>
+      <div class="photo-item"><img src="https://res.cloudinary.com/db5cyuuxy/image/fetch/w_640,c_limit,q_auto,f_auto/https://yeleshwarapu.github.io/assets/photos/DSCF2985.jpg" alt="photo" loading="lazy"></div>
+      <div class="photo-item"><img src="https://res.cloudinary.com/db5cyuuxy/image/fetch/w_640,c_limit,q_auto,f_auto/https://yeleshwarapu.github.io/assets/photos/DSCF3278.jpg" alt="photo" loading="lazy"></div>
+      <div class="photo-item"><img src="https://res.cloudinary.com/db5cyuuxy/image/fetch/w_640,c_limit,q_auto,f_auto/https://yeleshwarapu.github.io/assets/photos/DSCF3356.jpg" alt="photo" loading="lazy"></div>
+      <div class="photo-item"><img src="https://res.cloudinary.com/db5cyuuxy/image/fetch/w_640,c_limit,q_auto,f_auto/https://yeleshwarapu.github.io/assets/photos/DSCF3853.jpg" alt="photo" loading="lazy"></div>
+      <div class="photo-item"><img src="https://res.cloudinary.com/db5cyuuxy/image/fetch/w_640,c_limit,q_auto,f_auto/https://yeleshwarapu.github.io/assets/photos/DSCF5328.jpg" alt="photo" loading="lazy"></div>
+      <div class="photo-item"><img src="https://res.cloudinary.com/db5cyuuxy/image/fetch/w_640,c_limit,q_auto,f_auto/https://yeleshwarapu.github.io/assets/photos/DSCF6468.jpg" alt="photo" loading="lazy"></div>
+      <div class="photo-item"><img src="https://res.cloudinary.com/db5cyuuxy/image/fetch/w_640,c_limit,q_auto,f_auto/https://yeleshwarapu.github.io/assets/photos/DSCF8234.jpg" alt="photo" loading="lazy"></div>
+      <div class="photo-item"><img src="https://res.cloudinary.com/db5cyuuxy/image/fetch/w_640,c_limit,q_auto,f_auto/https://yeleshwarapu.github.io/assets/photos/DSCF8355.jpg" alt="photo" loading="lazy"></div>
+      <div class="photo-item"><img src="https://res.cloudinary.com/db5cyuuxy/image/fetch/w_640,c_limit,q_auto,f_auto/https://yeleshwarapu.github.io/assets/photos/DSCF8396.jpg" alt="photo" loading="lazy"></div>
+      <div class="photo-item"><img src="https://res.cloudinary.com/db5cyuuxy/image/fetch/w_640,c_limit,q_auto,f_auto/https://yeleshwarapu.github.io/assets/photos/DSCF9557.jpg" alt="photo" loading="lazy"></div>
+      <div class="photo-item"><img src="https://res.cloudinary.com/db5cyuuxy/image/fetch/w_640,c_limit,q_auto,f_auto/https://yeleshwarapu.github.io/assets/photos/DSCF9634.jpg" alt="photo" loading="lazy"></div>
+      <div class="photo-item"><img src="https://res.cloudinary.com/db5cyuuxy/image/fetch/w_640,c_limit,q_auto,f_auto/https://yeleshwarapu.github.io/assets/photos/DSCF9716.jpg" alt="photo" loading="lazy"></div>
+      <div class="photo-item"><img src="https://res.cloudinary.com/db5cyuuxy/image/fetch/w_640,c_limit,q_auto,f_auto/https://yeleshwarapu.github.io/assets/photos/lexingtonReservoir.jpg" alt="photo" loading="lazy"></div>
+      <div class="photo-item"><img src="https://res.cloudinary.com/db5cyuuxy/image/fetch/w_640,c_limit,q_auto,f_auto/https://yeleshwarapu.github.io/assets/photos/ManWalkingKodak.jpg" alt="photo" loading="lazy"></div>
+      <div class="photo-item"><img src="https://res.cloudinary.com/db5cyuuxy/image/fetch/w_640,c_limit,q_auto,f_auto/https://yeleshwarapu.github.io/assets/photos/onyxBike.jpg" alt="photo" loading="lazy"></div>
+      <div class="photo-item"><img src="https://res.cloudinary.com/db5cyuuxy/image/fetch/w_640,c_limit,q_auto,f_auto/https://yeleshwarapu.github.io/assets/photos/onyxSummitDescent.jpg" alt="photo" loading="lazy"></div>
+      <div class="photo-item"><img src="https://res.cloudinary.com/db5cyuuxy/image/fetch/w_640,c_limit,q_auto,f_auto/https://yeleshwarapu.github.io/assets/photos/SFHiberniaBank.jpg" alt="photo" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════ CONTACT ════════════════════════ -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="reveal">
+      <h2 class="contact-heading">Let's<br><span>connect.</span></h2>
+      <p style="color: var(--text-muted); font-size:12px; margin-top:24px; line-height:1.9;">
+        I'm always interested in thermal engineering roles, research opportunities, or just talking through interesting system-design problems. Reach out anytime.
+      </p>
+    </div>
+    <div class="contact-links reveal reveal-delay-2">
+      <a href="mailto:ayele002@ucr.edu" class="contact-link">
+        <div class="contact-link-icon">✉</div>
+        <div>
+          <div class="contact-link-label">Email</div>
+          <div class="contact-link-value">ayele002@ucr.edu</div>
+        </div>
+      </a>
+      <a href="https://linkedin.com/in/arjun-yeleshwarapu/" target="_blank" class="contact-link">
+        <div class="contact-link-icon">in</div>
+        <div>
+          <div class="contact-link-label">LinkedIn</div>
+          <div class="contact-link-value">arjun-yeleshwarapu</div>
+        </div>
+      </a>
+      <a href="https://github.com/yeleshwarapu/" target="_blank" class="contact-link">
+        <div class="contact-link-icon">⌥</div>
+        <div>
+          <div class="contact-link-label">GitHub</div>
+          <div class="contact-link-value">yeleshwarapu</div>
+        </div>
+      </a>
+      <a href="https://yeleshwarapu.github.io/assets/images/YeleshwarapuArjun2026Resume-6.pdf" target="_blank" class="contact-link">
+        <div class="contact-link-icon">↓</div>
+        <div>
+          <div class="contact-link-label">Resume</div>
+          <div class="contact-link-value">Download PDF</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Arjun Yeleshwarapu</span>
+  <span style="color: var(--amber);">ME · UCR · Class of 2027</span>
+  <span>Built with HTML + CSS + JS</span>
+</footer>
+
+<script>
+// ── Cursor ──
+const cursor = document.querySelector('.cursor');
+const dot = document.querySelector('.cursor-dot');
+const ring = document.querySelector('.cursor-ring');
+let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+
+document.addEventListener('mousemove', e => {
+  mouseX = e.clientX; mouseY = e.clientY;
+  dot.style.left = mouseX + 'px';
+  dot.style.top = mouseY + 'px';
+});
+
+// Smooth ring follow
+(function animRing() {
+  ringX += (mouseX - ringX) * 0.12;
+  ringY += (mouseY - ringY) * 0.12;
+  ring.style.left = ringX + 'px';
+  ring.style.top = ringY + 'px';
+  requestAnimationFrame(animRing);
+})();
+
+document.querySelectorAll('a, button, .exp-header, .skill-tag').forEach(el => {
+  el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
+  el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
+});
+
+// ── Nav scroll ──
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// ── Parallax ──
+const parallaxEls = document.querySelectorAll('[data-speed]');
+window.addEventListener('scroll', () => {
+  const sy = window.scrollY;
+  parallaxEls.forEach(el => {
+    const speed = parseFloat(el.dataset.speed);
+    el.style.transform = `translateY(${sy * speed}px)`;
+  });
+});
+
+// ── Accordion ──
+function toggleExp(header) {
+  const item = header.closest('.exp-item');
+  const wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.exp-item').forEach(i => i.classList.remove('open'));
+  if (!wasOpen) item.classList.add('open');
+}
+
+// ── Reveal on scroll ──
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
