@@ -414,6 +414,7 @@
     color: var(--amber);
   }
 
+  /* Progress bar auto-advance indicator */
   .exp-slideshow-progress {
     height: 1px;
     background: var(--border);
@@ -497,9 +498,14 @@
     #hero { padding: 0 16px 64px; }
     .section-inner { padding: 80px 24px; }
     .about-grid { grid-template-columns: 1fr; gap: 48px; }
-    .projects-grid { grid-template-columns: 1fr; }
-    .project-card { grid-column: 1 / -1; }
-    .project-card.featured { grid-column: 1 / -1; display: block; }
+    .projects-grid {
+      grid-template-columns: 1fr !important;
+    }
+    .project-card.featured,
+    .project-card[style*="grid-column"] {
+      grid-column: span 1 !important;
+      grid-template-columns: 1fr !important;
+    }
     .contact-inner { grid-template-columns: 1fr; gap: 48px; }
     footer { flex-direction: column; gap: 8px; }
     .hero-scroll { display: none; }
@@ -738,18 +744,18 @@
         </div>
         <div class="exp-body">
           <p style="color: var(--text-muted); font-size: 13px; line-height: 1.9;">
-            At Utthunga I was part of the Asset Performance Management team, traveling to
-            Bengaluru, India for the first half of my internship. The broader work centered on
-            digital twins and predictive modeling for global industrial clients. I built a
-            parametric Python tool for centrifugal pump performance curves using 2D interpolation
-            across RPM ranges, with interactive Plotly visualizations and a CLI for querying
-            interpolated values. I also built a pump health classifier using synthetic sensor data
-            across vibration, temperature, and pressure — achieving 96% accuracy with Decision Trees
-            and performing feature attribution for interpretability. On the simulation side I used
-            Altair SimLab on a fanless automotive ECU and refined a sheet metal HART enclosure in
-            SolidWorks. Beyond technical work, I shadowed DCS and APM engineering teams to understand
-            how telemetry, control logic, and predictive modeling converge in modern smart systems,
-            and participated in FMEA sessions and plant walkthroughs that directly informed my
+            At Utthunga I was part of the Asset Performance Management team, traveling to 
+            Bengaluru, India for the first half of my internship. The broader work centered on 
+            digital twins and predictive modeling for global industrial clients. I built a 
+            parametric Python tool for centrifugal pump performance curves using 2D interpolation 
+            across RPM ranges, with interactive Plotly visualizations and a CLI for querying 
+            interpolated values. I also built a pump health classifier using synthetic sensor data 
+            across vibration, temperature, and pressure — achieving 96% accuracy with Decision Trees 
+            and performing feature attribution for interpretability. On the simulation side I used 
+            Altair SimLab on a fanless automotive ECU and refined a sheet metal HART enclosure in 
+            SolidWorks. Beyond technical work, I shadowed DCS and APM engineering teams to understand 
+            how telemetry, control logic, and predictive modeling converge in modern smart systems, 
+            and participated in FMEA sessions and plant walkthroughs that directly informed my 
             modeling assumptions.
           </p>
           <!-- SLIDESHOW 02 -->
@@ -864,12 +870,10 @@
             working within FSAE rules constraints and tight packaging limitations. Built a
             MATLAB simulation workflow to predict coolant temperatures across a dynamic race
             lap, calculated pressure drops using the Swamee-Jain equation, and collaborated
-            with the EE team on a 97.4% efficient 21V boost converter to hit our 8 LpM flow
-            target. Designed the full cooling architecture in SolidWorks including 3D-printed
-            pump mounts and sheet metal tabs, instrumented the system with thermocouples and
-            a Reed Switch flow meter, and implemented embedded fan control on Arduino with
-            custom PWM curves across six 36W fans to reduce power draw while maintaining
-            optimal temperatures.
+            with the EE team on implementing a custom 97.4% efficient 21V boost converter to hit our 8 LpM flow
+            target. Instrumented the system with thermocouples and a Reed Switch flow meter to validate analysis. Enforced strict documentation 
+            standards with the standardization of FMEA, engineering drawings, and script documentation. Currently in the process of developing 
+            test methods to characterize loop performance with wind tunnel testing. 
           </p>
           <div class="project-chips">
             <span class="chip">MATLAB</span><span class="chip">SolidWorks</span><span class="chip">Arduino</span><span class="chip">Thermocouples</span><span class="chip">PWM Control</span><span class="chip">Swamee-Jain</span>
@@ -1092,8 +1096,9 @@
         </div>
       </div>
 
-      <div class="project-card reveal reveal-delay-2">
-        <div class="project-tag">Personal · Ongoing</div>
+     
+      <div class="project-card reveal reveal-delay-2" style="grid-column: span 2;">
+        <div class="project-tag">Personal · 2026</div>
         <h3 class="project-title">Strava Route Planner — R'Cycle Co-Op</h3>
         <p class="project-desc">
           Built a Python-based cycling route planner that generates loop routes optimized for air quality and UV exposure
@@ -1106,7 +1111,7 @@
           <span class="chip">Python</span><span class="chip">Strava API</span><span class="chip">Folium</span><span class="chip">PM2.5 Data</span>
         </div>
         <a href="https://github.com/yeleshwarapu/" class="project-link" target="_blank">GitHub →</a>
-
+      
         <!-- ── SLIDESHOW ── -->
         <div class="exp-slideshow" data-interval="4500" id="ss-rcycle" style="margin-top: 24px;">
           <div class="exp-slideshow-progress">
@@ -1116,31 +1121,34 @@
             <div class="exp-slide">
               <img src="https://yeleshwarapu.github.io/assets/images/sanfrancisco20mi.png"
                    alt="San Francisco 20mi route" loading="lazy"
-                   style="object-fit: contain; background: var(--bg);">
+                   style="object-fit: cover; object-position: center top;"
               <div class="exp-slide-caption">20mi Route — San Francisco</div>
               <div class="exp-slide-expand">⤢</div>
             </div>
             <div class="exp-slide">
               <img src="https://yeleshwarapu.github.io/assets/images/waterloo10mi.png"
                    alt="R'Cycle Co-Op — interactive route map" loading="lazy"
-                   style="object-fit: contain; background: var(--bg);">
-              <div class="exp-slide-caption">10mi Route — Waterloo</div>
+                   style="object-fit: cover; object-position: center top;"
+              <div class="exp-slide-caption">10mi Route - Waterloo</div>
               <div class="exp-slide-expand">⤢</div>
             </div>
+      
             <div class="exp-slide">
               <img src="https://yeleshwarapu.github.io/assets/images/seattlemobile.png"
                    alt="Interactive Route Map Example Mobile, Seattle" loading="lazy"
-                   style="object-fit: contain; background: var(--bg);">
-              <div class="exp-slide-caption">Mobile Version — Seattle</div>
+                   style="object-fit: cover; object-position: center top;"
+              <div class="exp-slide-caption">Mobile Version, Seattle </div>
               <div class="exp-slide-expand">⤢</div>
             </div>
+      
             <div class="exp-slide">
               <img src="https://yeleshwarapu.github.io/assets/images/routequality.png"
                    alt="R'Cycle Co-Op — route scoring" loading="lazy"
-                   style="object-fit: contain; background: var(--bg);">
-              <div class="exp-slide-caption">Route Scoring</div>
+                   sstyle="object-fit: cover; object-position: center top;"
+              <div class="exp-slide-caption">Routing Scoring</div>
               <div class="exp-slide-expand">⤢</div>
             </div>
+      
           </div>
           <div class="exp-slideshow-controls">
             <div class="exp-slide-dots"></div>
@@ -1152,6 +1160,8 @@
           </div>
         </div>
         <!-- ── /SLIDESHOW ── -->
+      
+      </div>
 
       </div>
 
@@ -1219,9 +1229,10 @@
       </p>
     </div>
     <div class="contact-links reveal reveal-delay-2">
-      <a href="/cdn-cgi/l/email-protection#eb8a928e878edbdbd9ab9e8899c58e8f9e" class="contact-link">
+     <div class="contact-links reveal reveal-delay-2">
+      <a href="mailto:ayele002@ucr.edu" class="contact-link">
         <div class="contact-link-icon">✉</div>
-        <div><div class="contact-link-label">Email</div><div class="contact-link-value"><span class="__cf_email__" data-cfemail="07667e626b623737354772647529626372">[email&#160;protected]</span></div></div>
+        <div><div class="contact-link-label">Email</div><div class="contact-link-value">ayele002@ucr.edu</div></div>
       </a>
       <a href="https://linkedin.com/in/arjun-yeleshwarapu/" target="_blank" class="contact-link">
         <div class="contact-link-icon">in</div>
@@ -1292,11 +1303,13 @@ window.addEventListener('scroll', () => {
   parallaxEls.forEach(el => { el.style.transform = `translateY(${sy * parseFloat(el.dataset.speed)}px)`; });
 });
 
-// ── Experience accordion ──
+// ── Experience accordion — measure actual height ──
 function setBodyHeight(body, open) {
   if (open) {
+    // Set to auto temporarily to measure, then animate
     body.style.maxHeight = body.scrollHeight + 'px';
   } else {
+    // Collapse: first lock to current height, then animate to 0
     body.style.maxHeight = body.scrollHeight + 'px';
     requestAnimationFrame(() => {
       requestAnimationFrame(() => { body.style.maxHeight = '0px'; });
@@ -1347,7 +1360,7 @@ const lbPrev     = document.getElementById('lightbox-prev');
 const lbNext     = document.getElementById('lightbox-next');
 const lbBackdrop = document.getElementById('lightbox-backdrop');
 
-let lbSlides = [];
+let lbSlides = [];   // array of {src, caption}
 let lbIndex  = 0;
 let lbSourceSlideshow = null;
 let lbAutoTimer = null;
@@ -1409,7 +1422,7 @@ function lbStep(dir) {
   lbIndex = (lbIndex + lbSlides.length + dir) % lbSlides.length;
   renderLightbox();
   if (lbSourceSlideshow) lbSourceSlideshow.syncTo(lbIndex);
-  lbAutoPlay();
+  lbAutoPlay(); // reset timer after manual nav
 }
 
 lbClose.addEventListener('click', closeLightbox);
@@ -1417,6 +1430,7 @@ lbBackdrop.addEventListener('click', closeLightbox);
 lbPrev.addEventListener('click', () => lbStep(-1));
 lbNext.addEventListener('click', () => lbStep(1));
 
+// Keyboard nav
 document.addEventListener('keydown', e => {
   if (!lightbox.classList.contains('open')) return;
   if (e.key === 'Escape') closeLightbox();
@@ -1424,6 +1438,7 @@ document.addEventListener('keydown', e => {
   if (e.key === 'ArrowRight') lbStep(1);
 });
 
+// Touch swipe for lightbox
 let lbTouchX = 0;
 lightbox.addEventListener('touchstart', e => { lbTouchX = e.touches[0].clientX; }, { passive: true });
 lightbox.addEventListener('touchend', e => {
@@ -1450,11 +1465,13 @@ class ExpSlideshow {
 
     this.total.textContent = this.slides.length;
 
+    // Build slide data for lightbox
     this.slideData = Array.from(this.slides).map(s => ({
       src: s.querySelector('img').src,
       caption: s.querySelector('.exp-slide-caption').textContent.trim()
     }));
 
+    // Build dots
     this.slides.forEach((_, i) => {
       const d = document.createElement('button');
       d.className = 'exp-slide-dot' + (i === 0 ? ' active' : '');
@@ -1466,18 +1483,21 @@ class ExpSlideshow {
     this.prevBtn.addEventListener('click', () => this.step(-1));
     this.nextBtn.addEventListener('click', () => this.step(1));
 
+    // Click image → open lightbox
     this.slides.forEach((slide, i) => {
       slide.querySelector('img').addEventListener('click', () => {
         openLightbox(this.slideData, i, this);
       });
     });
 
+    // Touch swipe on slideshow
     this.el.addEventListener('touchstart', e => { this.touchStartX = e.touches[0].clientX; }, { passive: true });
     this.el.addEventListener('touchend', e => {
       const dx = e.changedTouches[0].clientX - this.touchStartX;
       if (Math.abs(dx) > 40) this.step(dx < 0 ? 1 : -1);
     });
 
+    // Pause on hover
     this.el.addEventListener('mouseenter', () => this.pause());
     this.el.addEventListener('mouseleave', () => this.play());
 
@@ -1491,9 +1511,11 @@ class ExpSlideshow {
     this.play();
   }
 
+  // Called by lightbox to keep slideshow in sync
   syncTo(idx) {
     this.current = (idx + this.slides.length) % this.slides.length;
     this.render();
+    // Don't restart auto-play while lightbox is open
   }
 
   step(dir) { this.goTo(this.current + dir); }
@@ -1521,3 +1543,14 @@ class ExpSlideshow {
     this.progressBar.style.width = '0%';
   }
 }
+
+// Init all slideshows
+document.querySelectorAll('.exp-slideshow').forEach(el => new ExpSlideshow(el));
+
+// Init first accordion open with measured height
+document.querySelectorAll('.exp-item.open .exp-body').forEach(body => {
+  body.style.maxHeight = body.scrollHeight + 'px';
+});
+</script>
+</body>
+</html>
