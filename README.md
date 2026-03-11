@@ -1,27 +1,62 @@
-# Minimal Mistakes remote theme starter
+# yeleshwarapu.github.io
 
-Click [**Use this template**](https://github.com/mmistakes/mm-github-pages-starter/generate) button above for the quickest method of getting started with the [Minimal Mistakes Jekyll theme](https://github.com/mmistakes/minimal-mistakes).
+Personal portfolio site for Arjun Yeleshwarapu — ME student at UC Riverside focused on thermal systems, cooling loop design, and energy optimization.
 
-Contains basic configuration to get you a site with:
-
-- Sample posts.
-- Sample top navigation.
-- Sample author sidebar with social links.
-- Sample footer links.
-- Paginated home page.
-- Archive pages for posts grouped by year, category, and tag.
-- Sample about page.
-- Sample 404 page.
-- Site wide search.
-
-Replace sample content with your own and [configure as necessary](https://mmistakes.github.io/minimal-mistakes/docs/configuration/).
+**Live site:** [yeleshwarapu.github.io](https://yeleshwarapu.github.io)
 
 ---
 
-## Troubleshooting
+## Stack
 
-If you have a question about using Jekyll, start a discussion on the [Jekyll Forum](https://talk.jekyllrb.com/) or [StackOverflow](https://stackoverflow.com/questions/tagged/jekyll). Other resources:
+Plain HTML, CSS, and vanilla JS — no frameworks, no build step, no dependencies.
 
-- [Ruby 101](https://jekyllrb.com/docs/ruby-101/)
-- [Setting up a Jekyll site with GitHub Pages](https://jekyllrb.com/docs/github-pages/)
-- [Configuring GitHub Metadata](https://github.com/jekyll/github-metadata/blob/master/docs/configuration.md#configuration) to work properly when developing locally and avoid `No GitHub API authentication could be found. Some fields may be missing or have incorrect data.` warnings.
+- **Fonts:** Syne + DM Mono via Google Fonts
+- **Images:** Cloudinary CDN for photo strip, GitHub-hosted assets for project images
+- **Hosting:** GitHub Pages (static, Jekyll disabled via `.nojekyll`)
+
+---
+
+## Structure
+
+```
+/
+├── index.html              # Entire site — single file
+├── .nojekyll               # Disables Jekyll on GitHub Pages
+└── assets/
+    ├── images/             # Project photos, CAD renders, screenshots
+    ├── photos/             # Photography strip images
+    └── images/*.pdf        # Resume
+```
+
+---
+
+## Sections
+
+| Section | Description |
+|---|---|
+| Hero | Name, tagline, animated heat lines |
+| About | Background, skills, stats, CAD render |
+| Experience | Accordion with image slideshows — Highlander Racing, Utthunga, FRC |
+| Projects | Grid — FSAE cooling loop, pump classifier, heat exchanger tool, R'Cycle Co-Op, home energy dashboard |
+| Photography | Draggable horizontal photo strip |
+| Contact | Email, LinkedIn, GitHub, resume download |
+
+---
+
+## Running Locally
+
+No build step required — just open `index.html` in a browser, or serve it with any static server:
+
+```bash
+npx serve .
+# or
+python -m http.server 8000
+```
+
+---
+
+## Contact
+
+- **Email:** ayele002@ucr.edu
+- **LinkedIn:** [arjun-yeleshwarapu](https://linkedin.com/in/arjun-yeleshwarapu/)
+- **GitHub:** [yeleshwarapu](https://github.com/yeleshwarapu/)
