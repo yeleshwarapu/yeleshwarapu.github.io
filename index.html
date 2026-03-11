@@ -497,9 +497,9 @@
     #hero { padding: 0 16px 64px; }
     .section-inner { padding: 80px 24px; }
     .about-grid { grid-template-columns: 1fr; gap: 48px; }
-    .projects-grid { grid-template-columns: 1fr !important; }
-    .project-card { grid-column: span 1 !important; grid-template-columns: 1fr !important; }
-    .project-card.featured { grid-column: span 1 !important; grid-template-columns: 1fr !important; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .project-card { grid-column: 1 / -1; }
+    .project-card.featured { grid-column: 1 / -1; display: block; }
     .contact-inner { grid-template-columns: 1fr; gap: 48px; }
     footer { flex-direction: column; gap: 8px; }
     .hero-scroll { display: none; }
